@@ -17,10 +17,10 @@ function berechneMaschen() {
     }
     
     // Validierung der Rundenzahl
-    if (isNaN(rundenzahl) || rundenzahl < 24 || rundenzahl > 54) {
-        alert("Bitte geben Sie eine gültige Rundenzahl zwischen 24 und 54 ein.");
-        return;
-    }
+    //if (isNaN(rundenzahl) || rundenzahl < 24 || rundenzahl > 54) {
+    //    alert("Bitte geben Sie eine gültige Rundenzahl zwischen 24 und 54 ein.");
+   //     return;
+   // }
 
     // Berechnung der Maschenzahl
     const maschenzahlResultat = (fussumfang / 100) * maschenzahl * 0.85;
