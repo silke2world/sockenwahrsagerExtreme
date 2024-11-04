@@ -1,0 +1,1 @@
+Es nervt mich, wenn dauernd Menschen andere Menschen fragen, welche Maschenzahl für einen Socken korrekt wäre. Das lässt sich leicht mit wenigen Daten berechnen. Das versuche ich mit diesem Projekt darzustellen. 
