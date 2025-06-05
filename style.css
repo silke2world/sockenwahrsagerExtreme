@@ -1,7 +1,7 @@
 /* Grundlegendes Styling für die Seite */
 body {
   font-family: Arial, sans-serif;
-  text-align: center;
+  text-align: left;
   background-color: #f9f9f9;
   color: #333;
   margin: 0;
@@ -18,7 +18,17 @@ body {
 }
 
 h1 {
-  color: #00796b;
+  color: #3509ac;
+  font-size: 1.8em;
+}
+
+h2 {
+  color: #96123e;
+  font-size: 1.8em;
+}
+
+h3 {
+  color: #037164;
   font-size: 1.8em;
 }
 
@@ -29,6 +39,23 @@ p {
 }
 
 /* Styling für die Eingabefelder und den Button */
+
+.eingabegruppe {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.eingabegruppe label {
+  width: 300px; /* oder je nach Bedarf */
+  margin-right: 1rem;
+}
+
+.eingabegruppe input {
+  flex: 1;
+}
+
+
 input, button {
   width: 100%;
   padding: 10px;
