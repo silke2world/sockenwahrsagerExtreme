@@ -66,8 +66,8 @@ function berechneDaten() {
     document.getElementById("fussGramm").textContent = fussGramm.toFixed(2);
 
     // Gesamt
-    const gesamtMaschen = (anschlagMaschen + bundMaschen + schaftMaschen + fussMaschen + bumerang3 * 2) * 2;
-    const gesamtGramm = (anschlagGramm + bundGramm + schaftGramm + fussGramm + bumerangGramm * 2) * 2;
+    const paarMaschen = (anschlagMaschen + bundMaschen + schaftMaschen + fussMaschen + bumerang3 * 2) * 2;
+    const paarGramm = (anschlagGramm + bundGramm + schaftGramm + fussGramm + bumerangGramm * 2) * 2;
     document.getElementById("paarMaschen").textContent = Math.round(gesamtMaschen);
     document.getElementById("paarGramm").textContent = gesamtGramm.toFixed(2);
 }
