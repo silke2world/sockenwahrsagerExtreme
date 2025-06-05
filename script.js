@@ -9,6 +9,9 @@ function berechneDaten() {
     const bund = parseInt(document.getElementById("bund").value, 10);
     const schaft = parseInt(document.getElementById("schaft").value, 10);
     const fuss = parseInt(document.getElementById("fusslang").value, 10);
+    const gesamtMaschen = (anschlagMaschen + bundMaschen + schaftMaschen + fussMaschen + bumerang3 * 2) * 2;
+    const gesamtGramm = (anschlagGramm + bundGramm + schaftGramm + fussGramm + bumerangGramm * 2) * 2;
+
 
     if ([fussumfang, maschenzahl, rundenzahl, grammprobe, anschlag, bund, schaft, fusslang].some(isNaN)) {
         alert("Bitte fülle alle Felder korrekt aus.");
@@ -65,5 +68,11 @@ function berechneDaten() {
     document.getElementById("fussRunden").textContent = Math.round(fussRunden);
     document.getElementById("fussMaschen").textContent = Math.round(fussMaschen);
     document.getElementById("fussGramm").textContent = fussGramm.toFixed(2);
+
+    // Gesamt
+    document.getElementById("paarMaschen").textContent = Math.round(gesamtMaschen);
+    document.getElementById("paarGramm").textContent = gesamtGramm.toFixed(2);
+
+
 }
 </script>
