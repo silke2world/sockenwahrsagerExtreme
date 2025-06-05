@@ -1,6 +1,7 @@
 <script>
 function berechneDaten() {
     // Eingabewerte holen
+    
     const fussumfang = Number(document.getElementById("fussumfang").value);
     const fusslang = Number(document.getElementById("fusslang").value);
     const maschenzahl = Number(document.getElementById("maschenzahl").value);
