@@ -27,7 +27,7 @@
     <label for="rundenzahl">Rundenzahl pro 10 cm:</label>
     <input type="number" id="rundenzahl" placeholder="z.B. 40" />
 
-    <label for="grammprobe">Maschen pro 1g Sockenwolle:</label>
+    <label for="grammprobe">Wie viele Maschen strickst du mit einem Gramm Sockenwolle:</label>
     <input type="number" id="grammprobe" placeholder="z.B. 280" />
 
     <label for="anschlag">Wie viele Maschen willst du anschlagen?</label>
@@ -39,10 +39,9 @@
     <label for="schaft">Wie viele Runden planst du für den Schaft?</label>
     <input type="number" id="schaft" placeholder="z.B. 60" />
 
-    <button onclick="berechneDaten()">Berechne alle Daten</button>
+  <button type="button" onclick="berechneDaten()">Berechne alle Daten</button>
 
     <!-- Ergebnisbereich -->
-    <h2>Ergebnisse</h2>
     <div id="ergebnisse">
       <p><strong>Maschenzahl (Fußumfang):</strong> <span id="maschenOutput">–</span></p>
 
