@@ -8,12 +8,8 @@ function berechneDaten() {
     const anschlag = parseInt(document.getElementById("anschlag").value, 10);
     const bund = parseInt(document.getElementById("bund").value, 10);
     const schaft = parseInt(document.getElementById("schaft").value, 10);
-    const fuss = parseInt(document.getElementById("fusslang").value, 10);
-    const gesamtMaschen = (anschlagMaschen + bundMaschen + schaftMaschen + fussMaschen + bumerang3 * 2) * 2;
-    const gesamtGramm = (anschlagGramm + bundGramm + schaftGramm + fussGramm + bumerangGramm * 2) * 2;
 
-
-    if ([fussumfang, maschenzahl, rundenzahl, grammprobe, anschlag, bund, schaft, fusslang].some(isNaN)) {
+    if ([fussumfang, fusslang, maschenzahl, rundenzahl, grammprobe, anschlag, bund, schaft].some(isNaN)) {
         alert("Bitte fülle alle Felder korrekt aus.");
         return;
     }
@@ -31,7 +27,6 @@ function berechneDaten() {
     const einteilung = `${bumerang1}-${bumerang2}-${bumerang1}`;
 
     document.getElementById("bumerangEinteilung").textContent = einteilung;
-    document.getElementById("bumerang1").textContent = bumerang1;
     document.getElementById("bumerang2").textContent = bumerang2;
     document.getElementById("bumerang3").textContent = Math.round(bumerang3);
     document.getElementById("bumerangGramm").textContent = bumerangGramm.toFixed(2);
@@ -60,7 +55,7 @@ function berechneDaten() {
     document.getElementById("schaftMm").textContent = schaftMm.toFixed(0);
 
     // Fuß
-    const fussMm = fusslang - bumerang1 * 2 / rundenzahl * 100;
+    const fussMm = fusslang - (bumerang1 * 2 / rundenzahl * 100);
     const fussRunden = fussMm / 100 * rundenzahl;
     const fussMaschen = fussRunden * anschlag;
     const fussGramm = fussMaschen / grammprobe;
@@ -70,9 +65,9 @@ function berechneDaten() {
     document.getElementById("fussGramm").textContent = fussGramm.toFixed(2);
 
     // Gesamt
+    const gesamtMaschen = (anschlagMaschen + bundMaschen + schaftMaschen + fussMaschen + bumerang3 * 2) * 2;
+    const gesamtGramm = (anschlagGramm + bundGramm + schaftGramm + fussGramm + bumerangGramm * 2) * 2;
     document.getElementById("paarMaschen").textContent = Math.round(gesamtMaschen);
     document.getElementById("paarGramm").textContent = gesamtGramm.toFixed(2);
-
-
 }
 </script>
