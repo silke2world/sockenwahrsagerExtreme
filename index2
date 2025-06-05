@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SockenwahrsagerExtreme – Test</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 1rem;
+    }
+    input, button {
+      margin-bottom: 1rem;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <h1>SockenwahrsagerExtreme</h1>
+
+  <label for="fussumfang">Fußumfang (in mm):</label>
+  <input type="number" id="fussumfang" value="220" />
+
+  <label for="maschenzahl">Maschenzahl pro 10 cm:</label>
+  <input type="number" id="maschenzahl" value="30" />
+
+  <button type="button" onclick="berechneDaten()">Berechne alle Daten</button>
+
+  <p><strong>Maschenzahl (Fußumfang):</strong> <span id="maschenOutput">–</span></p>
+
+  <!-- Inline JavaScript am Ende -->
+  <script>
+    function berechneDaten() {
+      const fussumfang = parseInt(document.getElementById("fussumfang").value, 10);
+      const maschenzahl = parseInt(document.getElementById("maschenzahl").value, 10);
+
+      if (isNaN(fussumfang) || isNaN(maschenzahl)) {
+        alert("Bitte beide Felder korrekt ausfüllen.");
+        return;
+      }
+
+      const maschenResultat = (fussumfang / 100) * maschenzahl * 0.85;
+      document.getElementById("maschenOutput").textContent = Math.round(maschenResultat);
+    }
+  </script>
+</body>
+</html>
