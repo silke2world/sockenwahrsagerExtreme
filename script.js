@@ -1,6 +1,7 @@
 <script>
 function berechneDaten() {
     const fussumfang = parseInt(document.getElementById("fussumfang").value, 10);
+    const fusslang = parseInt(document.getElementById("fusslang").value, 10);
     const maschenzahl = parseInt(document.getElementById("maschenzahl").value, 10);
     const rundenzahl = parseInt(document.getElementById("rundenzahl").value, 10);
     const grammprobe = parseInt(document.getElementById("grammprobe").value, 10);
@@ -9,7 +10,7 @@ function berechneDaten() {
     const schaft = parseInt(document.getElementById("schaft").value, 10);
     const fuss = parseInt(document.getElementById("fusslang").value, 10);
 
-    if ([fussumfang, maschenzahl, rundenzahl, grammprobe, anschlag, bund, schaft, fuss].some(isNaN)) {
+    if ([fussumfang, maschenzahl, rundenzahl, grammprobe, anschlag, bund, schaft, fusslang].some(isNaN)) {
         alert("Bitte fülle alle Felder korrekt aus.");
         return;
     }
@@ -56,7 +57,7 @@ function berechneDaten() {
     document.getElementById("schaftMm").textContent = schaftMm.toFixed(0);
 
     // Fuß
-    const fussMm = fuss - bumerang1 * 2 / rundenzahl * 100;
+    const fussMm = fusslang - bumerang1 * 2 / rundenzahl * 100;
     const fussRunden = fussMm / 100 * rundenzahl;
     const fussMaschen = fussRunden * anschlag;
     const fussGramm = fussMaschen / grammprobe;
