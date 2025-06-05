@@ -1,81 +1,94 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="SockenwahrsagerExtreme: Online-Rechner für Sockenstricker*innen – berechne Garnverbrauch, Maschen, Runden und mehr." />
   <title>SockenwahrsagerExtreme</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
     <h1>SockenwahrsagerExtreme</h1>
-  <p>Diese Seite ist eine rein private Spielerei. Mehr darüber findest du bei GitHub: <a href="https://github.com/silke2world/sockenwahrsagerExtreme" target="_blank">GitHub - SockenwahrsagerExtreme</a></p>
+    <p>Diese Seite ist eine rein private Spielerei. Mehr darüber findest du bei GitHub: 
+      <a href="https://github.com/silke2world/sockenwahrsagerExtreme" target="_blank">GitHub - SockenwahrsagerExtreme</a>
+    </p>
 
-    <!-- Eingabefelder und Berechnung -->
+    <!-- Eingabefelder -->
     <label for="fussumfang">Fußumfang (in mm):</label>
-    <input type="number" id="fussumfang" placeholder="z.B. 200">
-    
+    <input type="number" id="fussumfang" placeholder="z.B. 200" />
+
     <label for="maschenzahl">Maschenzahl pro 10 cm:</label>
-    <input type="number" id="maschenzahl" placeholder="z.B. 30">
-    
+    <input type="number" id="maschenzahl" placeholder="z.B. 30" />
+
     <label for="rundenzahl">Rundenzahl pro 10 cm:</label>
-    <input type="number" id="rundenzahl" placeholder="z.B. 40">
-    
-    <label for="grammprobe">Maschen pro 1g Sockenwolle</label>
-    <input type="number" id="grammprobe" placeholder="z.B. 280">
-    
+    <input type="number" id="rundenzahl" placeholder="z.B. 40" />
+
+    <label for="grammprobe">Maschen pro 1g Sockenwolle:</label>
+    <input type="number" id="grammprobe" placeholder="z.B. 280" />
+
     <label for="anschlag">Wie viele Maschen willst du anschlagen?</label>
-    <input type="number" id="anschlag" placeholder="z.B. 64">
-    
+    <input type="number" id="anschlag" placeholder="z.B. 64" />
+
     <label for="bund">Wie viele Runden planst du für das Bündchen?</label>
-    <input type="number" id="bund" placeholder="z.B. 20">
-    
+    <input type="number" id="bund" placeholder="z.B. 20" />
+
     <label for="schaft">Wie viele Runden planst du für den Schaft?</label>
-    <input type="number" id="schaft" placeholder="z.B. 60">
-    
+    <input type="number" id="schaft" placeholder="z.B. 60" />
+
     <button onclick="berechneDaten()">Berechne alle Daten</button>
-    
+
     <!-- Ergebnisbereich -->
-<h2>Ergebnisse</h2>
-    
-<div id="ergebnisse">
-  <p><strong>Maschenzahl (Fußumfang):</strong> <span id="maschenOutput">–</span></p>
+    <h2>Ergebnisse</h2>
+    <div id="ergebnisse">
+      <p><strong>Maschenzahl (Fußumfang):</strong> <span id="maschenOutput">–</span></p>
 
-  <h3>Anschlag</h3>
-  <p><strong>Maschen rechnerisch (da Anschlag mehr Garn verbraucht):</strong> <span id="anschlagMaschen">–</span></p>
-  <p><strong>Verbrauch (Gramm):</strong> <span id="anschlagGramm">–</span> g</p>
+      <h3>Anschlag</h3>
+      <p><strong>Maschen rechnerisch (da Anschlag mehr Garn verbraucht):</strong> <span id="anschlagMaschen">–</span></p>
+      <p><strong>Verbrauch (Gramm):</strong> <span id="anschlagGramm">–</span> g</p>
 
-  <h3>Bündchen</h3>
-  <p><strong>Maschen:</strong> <span id="bundMaschen">–</span></p>
-  <p><strong>Verbrauch (Gramm):</strong> <span id="bundGramm">–</span> g</p>
-  <p><strong>Höhe (in mm):</strong> <span id="bundMm">–</span> mm</p>
+      <h3>Bündchen</h3>
+      <p><strong>Maschen:</strong> <span id="bundMaschen">–</span></p>
+      <p><strong>Verbrauch (Gramm):</strong> <span id="bundGramm">–</span> g</p>
+      <p><strong>Höhe (in mm):</strong> <span id="bundMm">–</span> mm</p>
 
-  <h3>Schaft</h3>
-  <p><strong>Maschen:</strong> <span id="schaftMaschen">–</span></p>
-  <p><strong>Verbrauch (Gramm):</strong> <span id="schaftGramm">–</span> g</p>
-  <p><strong>Höhe (in mm):</strong> <span id="schaftMm">–</span> mm</p>
-  
-  <h3>Ferse</h3>
-  <p><strong>Bumerang 1:</strong> <span id="bumerang1">–</span></p>
-  <p><strong>Bumerang 2:</strong> <span id="bumerang2">–</span></p>
-  <p><strong>Maschen:</strong> <span id="bumerang3">–</span></p>
-  
-</div>
+      <h3>Schaft</h3>
+      <p><strong>Maschen:</strong> <span id="schaftMaschen">–</span></p>
+      <p><strong>Verbrauch (Gramm):</strong> <span id="schaftGramm">–</span> g</p>
+      <p><strong>Höhe (in mm):</strong> <span id="schaftMm">–</span> mm</p>
 
+      <h3>Ferse</h3>
+      <p><strong>Bumerangeinteilung:</strong> <span id="bumerangEinteilung">–</span></p>
+      <p><strong>Bumerang 2:</strong> <span id="bumerang2">–</span></p>
+      <p><strong>Maschen:</strong> <span id="bumerang3">–</span></p>
+      <p><strong>Verbrauch (Gramm):</strong> <span id="bumerangGramm">–</span> g</p>
+      <p><strong>Höhe (in mm):</strong> <span id="bumerangMm">–</span> mm</p>
 
+      <h3>Fuß</h3>
+      <p><strong>Maschen:</strong> <span id="fussMaschen">–</span></p>
+      <p><strong>Runden:</strong> <span id="fussRunden">–</span></p>
+      <p><strong>Verbrauch (Gramm):</strong> <span id="fussGramm">–</span> g</p>
+      <p><strong>Höhe (in mm):</strong> <span id="fussMm">–</span> mm</p>
+
+      <h3>Spitze (identisch zur Ferse)</h3>
+
+      <h3>Gesamt</h3>
+      <p><strong>Maschen für ein Sockenpaar:</strong> <span id="paarMaschen">–</span></p>
+      <p><strong>Garnverbrauch in Gramm für ein Sockenpaar:</strong> <span id="paarGramm">–</span> g</p>
+    </div>
+
+    <!-- Erklärung -->
+    <p>Ok, das hier ist KEIN Wahrsager. Du gibst deine Daten ein und der Rechner sagt dir, welche Daten rauskommen. Und zwar reden wir hier von einer StiNo-Socke (also glatt rechts gestrickt).</p>
+
+    <p>Typische Fragen, die du dir hier beantworten kannst: Wie lang soll ich mein Bündchen stricken, damit ich mit dem Garn hinkomme? Du gibst deine Daten ein und siehst unten, wie viel Garn du benötigst. Hast du weniger Garn, dann ändere deine Daten und rechne neu.</p>
+
+    <p>Fußumfang: Nimm ein Maßband, such die breiteste Stelle vorn am Ballen und gib den gemessenen Wert in Millimetern in den Rechner ein. Falls der Beinumfang über dem Knöchel stark von dem gemessenen Wert abweicht, kannst du am Fuß und am Bein mit unterschiedlichen Maschenzahlen arbeiten.</p>
+
+    <p>Dann nimm dir eine fertige Socke, die du mit dem gleichen Garn gestrickt hast, das du für dein neues Projekt verwenden willst. An der Socke misst du die Maschenprobe: wie viele Maschen sind 10 Zentimeter und wie viele Runden sind 10 Zentimeter. Ja, ich weiß, die Rundenzahl bräuchte es für diese Anwendung nicht, aber wenn man schon mal misst...</p>
+
+    <p>Das Formular zeigt dir an, wie viele Maschen du rein rechnerisch anschlagen solltest. Jetzt musst du überlegen, welche Anforderungen dein Muster ggf. an die Rundenzahl stellt. Eine einfache Socke hat oft eine durch 4 teilbare Maschenzahl. Sagt der Rechner dir "61 Maschen", dann ist 60 Maschen eine gute Entscheidung.</p>
   </div>
 
- 
   <script src="script.js"></script>
-
-     <!-- Erklärungstext -->
-
-    <p>Ok, das hier ist KEIN Wahrsager. Du gibst deine Daten ein und der Rechner sagt dir, welche Daten rauskommen. Und zwar reden wir hier von einer StiNo-Socke (also glatt rechts gestrickt).</p>
-    <p>Typische Fragen, die du dir hier beantworten kannst: Wie lang soll ich mein Bündchen stricken, damit ich mit dem Garn hinkomme? Du gibst deine Daten ein und siehst unten, wie viel Garn du benötigst. Hast du weniger Garn, dann ändere deine Daten und rechne neu.</p>
-    <p>Fußumfang: Nimm ein Maßband, such die breiteste Stelle vorn am Ballen und gib den gemessenen Wert in Millimetern in den Rechner ein. Falls der Beinumang über dem Knöchel stark von dem gemessenen Wert abweicht, kannst du am Fuß und am Bein mit unterschiedlichen Maschenzahlen arbeiten. </p>
-    <p>Dann nimm dir eine fertige Socke, die du mit dem gleichen Garn gestrickt hast, das du für dein neues Projekt verwenden willst. An der Socke misst du die Maschenprobe: wie viele Maschen sind 10 Zentimeter und wie viele Runden sind 10 Zentimeter. Ja, ich weiß, die Rundenzahl bräuchte es für diese Anwendung nicht, aber wenn man schon mal misst...</p>
-    <p>Das Formular zeigt dir an, wie viele Maschen du rein rechnerisch anschlagen solltest. Jetzt musst du überlegen, welche Anforderungen dein Muster ggf. an die Rundenzahl stellt. Eine einfache Socke hat oft eine durch 4 teilbare Maschenzahl. Sagt der Rechner dir "61 Maschen", dann ist 60 Maschen eine gute Entscheidung. </p>
-   
-  
 </body>
 </html>
