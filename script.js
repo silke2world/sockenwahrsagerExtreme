@@ -1,5 +1,6 @@
 <script>
 function berechneDaten() {
+    alert("Button wurde geklickt!");
     const fussumfang = parseInt(document.getElementById("fussumfang").value, 10);
     const fusslang = parseInt(document.getElementById("fusslang").value, 10);
     const maschenzahl = parseInt(document.getElementById("maschenzahl").value, 10);
