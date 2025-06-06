@@ -5,54 +5,59 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="SockenwahrsagerExtreme: Online-Rechner für Sockenstricker*innen – berechne Garnverbrauch, Maschen, Runden und mehr." />
   <title>SockenwahrsagerExtreme</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <h1>SockenwahrsagerExtreme</h1>
 
-  <p>Gib deine Daten ein und drück dann den grünen Button. Für die Minderweite rechne ich mit 85 % und die Sockenlänge nehme ich mit 1,5 % länger als der Fuß des Trägers an. Diese Werte sind aktuell fix. Du kannst sie nicht einstellen.</p>
-  <p>Der Sockenwahrsager nimmt an, dass du eine Bumerangferse und einen Bumerangspitze strickst. Das ist rechentechnisch sehr einfach und für eine Schätzung des Garnverbrauchs ganz brauchbar. Aber es bleibt eine Schätzung.</p>
- <div class="eingabegruppe">
-  <label for="fussumfang">Fußumfang (in mm):</label>
-  <input type="number" id="fussumfang" value="220" />
-</div>
+  <p>Gib deine Daten ein und drück dann den grünen Button. Für die Minderweite rechne ich mit 85 % und die Sockenlänge nehme ich mit 1,5 % länger als der Fuß des Trägers an. Diese Werte sind aktuell fix. Du kannst sie nicht einstellen.</p>
+  <p>Der Sockenwahrsager nimmt an, dass du eine Bumerangferse und eine Bumerangspitze strickst. Das ist rechentechnisch sehr einfach und für eine Schätzung des Garnverbrauchs brauchbar – aber es bleibt eine Schätzung.</p>
 
-<div class="eingabegruppe">
-  <label for="fusslang">Fußlänge (in mm):</label>
-  <input type="number" id="fusslang" value="252">
-</div>
+  <form onsubmit="return false">
+    <div class="eingabegruppe">
+      <label for="fussumfang">Fußumfang (in mm):</label>
+      <input type="number" id="fussumfang" value="220" min="100" max="350" />
+    </div>
 
-<div class="eingabegruppe">
-  <label for="maschenzahl">Maschenzahl pro 10 cm:</label>
-  <input type="number" id="maschenzahl" value="34" />
-</div>
+    <div class="eingabegruppe">
+      <label for="fusslang">Fußlänge (in mm):</label>
+      <input type="number" id="fusslang" value="252" min="100" max="350" />
+    </div>
 
-<div class="eingabegruppe">
-  <label for="rundenzahl">Rundenzahl pro 10 cm:</label>
-  <input type="number" id="rundenzahl" value="46" />
-</div>
+    <div class="eingabegruppe">
+      <label for="maschenzahl">Maschenzahl pro 10 cm:</label>
+      <input type="number" id="maschenzahl" value="34" min="26" max="40" />
+    </div>
 
-<div class="eingabegruppe">
-  <label for="grammprobe">Wie viele Maschen strickst du mit einem Gramm Sockenwolle?</label>
-  <input type="number" id="grammprobe" value="300" />
-</div>
+    <div class="eingabegruppe">
+      <label for="rundenzahl">Rundenzahl pro 10 cm:</label>
+      <input type="number" id="rundenzahl" value="46" min="36" max="50" />
+    </div>
 
-<div class="eingabegruppe">
-  <label for="anschlag">Wie viele Maschen willst du anschlagen?</label>
-  <input type="number" id="anschlag" value="64" />
-</div>
+    <div class="eingabegruppe">
+      <label for="grammprobe">Wie viele Maschen strickst du mit einem Gramm Sockenwolle?</label>
+      <input type="number" id="grammprobe" value="300" min="200" max="350" />
+    </div>
 
-<div class="eingabegruppe">
-  <label for="bund">Wie viele Runden planst du für das Bündchen?</label>
-  <input type="number" id="bund" value="10" />
-</div>
+    <div class="eingabegruppe">
+      <label for="anschlag">Wie viele Maschen willst du anschlagen?</label>
+      <input type="number" id="anschlag" value="64" min="36" max="96" />
+    </div>
 
-<div class="eingabegruppe">
-  <label for="schaft">Wie viele Runden planst du für den Schaft?</label>
-  <input type="number" id="schaft" value="40" />
-</div>
+    <div class="eingabegruppe">
+      <label for="bund">Wie viele Runden planst du für das Bündchen?</label>
+      <input type="number" id="bund" value="10" min="0" max="300" />
+    </div>
 
-  <button onclick="berechneDaten()">Berechne alle Daten</button>
+    <div class="eingabegruppe">
+      <label for="schaft">Wie viele Runden planst du für den Schaft?</label>
+      <input type="number" id="schaft" value="40" min="0" max="300" />
+    </div>
+
+    <div id="fehlerliste" style="color: red; margin-top: 1em;" aria-live="polite"></div>
+
+    <button type="button" onclick="berechneDaten()">Berechne alle Daten</button>
+  </form>
 
   <div id="ergebnisse">
 
@@ -93,75 +98,110 @@
     <strong>Garnverbrauch in Gramm für ein Sockenpaar:</strong> <span id="paarGramm">–</span> g</p>
   </div>
 
+
   <script>
-    function berechneDaten() {
-      const fussumfang = parseInt(document.getElementById("fussumfang").value, 10);
-      const fusslang = parseInt(document.getElementById("fusslang").value, 10);
-      const maschenzahl = parseInt(document.getElementById("maschenzahl").value, 10);
-      const rundenzahl = parseInt(document.getElementById("rundenzahl").value, 10);
-      const grammprobe = parseInt(document.getElementById("grammprobe").value, 10);
-      const anschlag = parseInt(document.getElementById("anschlag").value, 10);
-      const bund = parseInt(document.getElementById("bund").value, 10);
-      const schaft = parseInt(document.getElementById("schaft").value, 10);
+function berechneDaten() {
+  const inputs = [
+    { id: "fussumfang", min: 100, max: 350, label: "Fußumfang (mm)" },
+    { id: "fusslang", min: 100, max: 350, label: "Fußlänge (mm)" },
+    { id: "maschenzahl", min: 26, max: 40, label: "Maschenzahl pro 10 cm" },
+    { id: "rundenzahl", min: 36, max: 50, label: "Rundenzahl pro 10 cm" },
+    { id: "grammprobe", min: 200, max: 350, label: "Maschen pro Gramm" },
+    { id: "anschlag", min: 36, max: 96, label: "Anschlag (Maschen)" },
+    { id: "bund", min: 0, max: 300, label: "Bündchenrunden" },
+    { id: "schaft", min: 0, max: 300, label: "Schaft-Runden" }
+  ];
 
-      document.getElementById("anschlagGeplant").textContent = anschlag;
-      document.getElementById("bundGeplant").textContent = bund;
-      document.getElementById("schaftGeplant").textContent = schaft;
-      document.getElementById("fusslangGeplant").textContent = fusslang;
+  const werte = {};
+  const fehlerliste = document.getElementById("fehlerliste");
+  fehlerliste.innerHTML = "";
 
+  const fehler = [];
 
-      if ([fussumfang, fusslang, maschenzahl, rundenzahl, grammprobe, anschlag, bund, schaft].some(isNaN)) {
-        alert("Bitte fülle alle Felder korrekt aus.");
-        return;
-      }
+  inputs.forEach(({ id, min, max, label }) => {
+    const val = document.getElementById(id).value.trim();
+    const num = Number(val);
 
-      const maschenOutput = (fussumfang / 100) * maschenzahl * 0.85;
-      document.getElementById("maschenOutput").textContent = Math.round(maschenOutput);
-
-      const bumerang1 = Math.floor(anschlag / 6);
-      const bumerang2 = anschlag / 2 - 2 * bumerang1;
-      const bumerang3 = (anschlag / 2 + bumerang2) * bumerang1 *2;
-      const bumerangGramm = bumerang3 / grammprobe;
-      const bumerangMm = bumerang1 * 2 / rundenzahl * 100;
-
-      document.getElementById("bumerangEinteilung").textContent = `${bumerang1}-${bumerang2}-${bumerang1}`;
-      document.getElementById("bumerang2").textContent = bumerang2;
-      document.getElementById("bumerang3").textContent = Math.round(bumerang3);
-      document.getElementById("bumerangGramm").textContent = bumerangGramm.toFixed(0);
-      document.getElementById("bumerangMm").textContent = bumerangMm.toFixed(0);
-
-      const bundMaschen = bund * anschlag;
-      const bundGramm = bundMaschen / grammprobe;
-      const bundMm = bund / rundenzahl * 100;
-      document.getElementById("bundMaschen").textContent = bundMaschen;
-      document.getElementById("bundGramm").textContent = bundGramm.toFixed(0);
-      document.getElementById("bundMm").textContent = bundMm.toFixed(0);
-
-      const schaftMaschen = schaft * anschlag;
-      const schaftGramm = schaftMaschen / grammprobe;
-      const schaftMm = schaft / rundenzahl * 100;
-      document.getElementById("schaftMaschen").textContent = schaftMaschen;
-      document.getElementById("schaftGramm").textContent = schaftGramm.toFixed(0);
-      document.getElementById("schaftMm").textContent = schaftMm.toFixed(0);
-
-      const fussMm = fusslang * 1.015 - bumerangMm * 2;
-      const fussRunden = fussMm / 100 * rundenzahl;
-      const fussMaschen = fussRunden * anschlag;
-      const fussGramm = fussMaschen / grammprobe;
-      document.getElementById("fussMm").textContent = fussMm.toFixed(0);
-      document.getElementById("fussRunden").textContent = Math.round(fussRunden);
-      document.getElementById("fussMaschen").textContent = Math.round(fussMaschen);
-      document.getElementById("fussGramm").textContent = fussGramm.toFixed(0);
-
-      const hoeheMm = bundMm + schaftMm + bumerangMm;
-      const fusslangMm = bumerangMm * 2 + fussMm;
-      const paarMaschen = (anschlag + bundMaschen + schaftMaschen + fussMaschen + bumerang3 * 2) * 2;
-      const paarGramm = paarMaschen / grammprobe;
-      document.getElementById("hoeheMm").textContent = hoeheMm.toFixed(0);
-      document.getElementById("fusslangMm").textContent = fusslangMm.toFixed(0);
-      document.getElementById("paarMaschen").textContent = Math.round(paarMaschen);
-      document.getElementById("paarGramm").textContent = paarGramm.toFixed(0);
+    if (val === "" || isNaN(num)) {
+      fehler.push(`${label} muss eine gültige Zahl sein.`);
+    } else if (!Number.isInteger(num)) {
+      fehler.push(`${label} muss eine ganze Zahl sein (kein Komma).`);
+    } else if (num < min || num > max) {
+      fehler.push(`${label} muss zwischen ${min} und ${max} liegen.`);
+    } else {
+      werte[id] = num;
     }
+  });
+
+  if (fehler.length > 0) {
+    const ul = document.createElement("ul");
+    fehler.forEach(msg => {
+      const li = document.createElement("li");
+      li.textContent = msg;
+      ul.appendChild(li);
+    });
+    fehlerliste.appendChild(ul);
+    return;
+  }
+
+  // ---- AB HIER: BERECHNUNG ----
+  const {
+    fussumfang, fusslang, maschenzahl, rundenzahl,
+    grammprobe, anschlag, bund, schaft
+  } = werte;
+
+  const maschenOutput = (fussumfang / 100) * maschenzahl * 0.85;
+  const bumerang1 = Math.floor(anschlag / 6);
+  const bumerang2 = anschlag / 2 - 2 * bumerang1;
+  const bumerangMaschen = (anschlag / 2 + bumerang2) * bumerang1 * 2;
+  const bumerangGramm = bumerangMaschen / grammprobe;
+  const bumerangMm = (bumerang1 * 2 / rundenzahl) * 100;
+
+  const bundMaschen = bund * anschlag;
+  const bundGramm = bundMaschen / grammprobe;
+  const bundMm = (bund / rundenzahl) * 100;
+
+  const schaftMaschen = schaft * anschlag;
+  const schaftGramm = schaftMaschen / grammprobe;
+  const schaftMm = (schaft / rundenzahl) * 100;
+
+  const fussMm = fusslang * 1.015 - 2 * bumerangMm;
+  const fussRunden = (fussMm / 100) * rundenzahl;
+  const fussMaschen = fussRunden * anschlag;
+  const fussGramm = fussMaschen / grammprobe;
+
+  const hoeheMm = bundMm + schaftMm + bumerangMm;
+  const fusslangMm = 2 * bumerangMm + fussMm;
+  const paarMaschen = (bundMaschen + schaftMaschen + fussMaschen + bumerangMaschen * 2) * 2;
+  const paarGramm = paarMaschen / grammprobe;
+
+  const set = (id, val) => document.getElementById(id).textContent = val;
+
+  set("anschlagGeplant", anschlag);
+  set("maschenOutput", Math.round(maschenOutput));
+  set("bundGeplant", bund);
+  set("bundMaschen", bundMaschen);
+  set("bundGramm", bundGramm.toFixed(0));
+  set("bundMm", bundMm.toFixed(0));
+  set("schaftGeplant", schaft);
+  set("schaftMaschen", schaftMaschen);
+  set("schaftGramm", schaftGramm.toFixed(0));
+  set("schaftMm", schaftMm.toFixed(0));
+  set("bumerangEinteilung", `${bumerang1}-${bumerang2}-${bumerang1}`);
+  set("bumerang2", bumerang2);
+  set("bumerang3", Math.round(bumerangMaschen));
+  set("bumerangGramm", bumerangGramm.toFixed(0));
+  set("bumerangMm", bumerangMm.toFixed(0));
+  set("fussMm", fussMm.toFixed(0));
+  set("fussRunden", Math.round(fussRunden));
+  set("fussMaschen", Math.round(fussMaschen));
+  set("fussGramm", fussGramm.toFixed(0));
+  set("hoeheMm", hoeheMm.toFixed(0));
+  set("fusslangMm", fusslangMm.toFixed(0));
+  set("fusslangGeplant", fusslang);
+  set("paarMaschen", Math.round(paarMaschen));
+  set("paarGramm", paarGramm.toFixed(0));
+}
   </script>
 </body>
 </html>
