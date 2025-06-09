@@ -55,6 +55,12 @@ p {
   flex: 1;
 }
 
+.hilfetext {
+  display: block;
+  font-size: 0.8em;
+  color: #666;
+  margin-top: 4px;
+}
 
 input, button {
   width: 100%;
@@ -77,6 +83,8 @@ button {
 button:hover {
   background-color: #004d40;
 }
+
+
 
 /* Stil für das hervorgehobene Ergebnis */
 #result {

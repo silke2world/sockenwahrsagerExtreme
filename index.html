@@ -10,8 +10,8 @@
 <body>
   <h1>SockenwahrsagerExtreme</h1>
 
-  <p>Gib deine Daten ein und drück dann den grünen Button. Für die Minderweite rechne ich mit 85 % und die Sockenlänge nehme ich mit 1,5 % länger als der Fuß des Trägers an. Diese Werte sind aktuell fix. Du kannst sie nicht einstellen.</p>
-  <p>Der Sockenwahrsager nimmt an, dass du eine Bumerangferse und eine Bumerangspitze strickst. Das ist rechentechnisch sehr einfach und für eine Schätzung des Garnverbrauchs brauchbar – aber es bleibt eine Schätzung.</p>
+  <p class="hilfetext">Gib deine Daten ein und drück dann den grünen Button. Für die Minderweite rechne ich mit 85 % und die Sockenlänge nehme ich mit 1,5 % länger als der Fuß des Trägers an. Diese Werte sind aktuell fix. Du kannst sie nicht einstellen.</p>
+  <p class="hilfetext">Der Sockenwahrsager nimmt an, dass du eine Bumerangferse und eine Bumerangspitze strickst. Das ist rechentechnisch sehr einfach und für eine Schätzung des Garnverbrauchs brauchbar – aber es bleibt eine Schätzung.</p>
 
   <form onsubmit="return false">
     <div class="eingabegruppe">
@@ -24,6 +24,9 @@
       <input type="number" id="fusslang" value="252" min="100" max="350" />
     </div>
 
+    <small class="hilfetext">Nutze ggf. eine Anleitung, um den Fuß zu vermessen.</small>
+    <br>
+
     <div class="eingabegruppe">
       <label for="maschenzahl">Maschenzahl pro 10 cm:</label>
       <input type="number" id="maschenzahl" value="34" min="26" max="40" />
@@ -34,10 +37,16 @@
       <input type="number" id="rundenzahl" value="46" min="36" max="50" />
     </div>
 
+    <small class="hilfetext">Die Maschenprobe kannst du gut an einem fertigen Socken ausmessen.</small>
+    <br>
+
     <div class="eingabegruppe">
       <label for="grammprobe">Wie viele Maschen strickst du mit einem Gramm Sockenwolle?</label>
       <input type="number" id="grammprobe" value="300" min="200" max="350" />
+      <small class="hilfetext">. </small>
     </div>
+    <small class="hilfetext">Wiege dein Strickstück. Strick einige Runden (je mehr, desto genauer...). Wiege erneut. Teile die Maschenzahl durch den Gewichtszuwachs. z.B. 3000 (Maschen)/10 (Gramm).</small>
+    <br>
 
     <div class="eingabegruppe">
       <label for="anschlag">Wie viele Maschen willst du anschlagen?</label>
@@ -61,6 +70,13 @@
 
   <div id="ergebnisse">
 
+      <h3>Gesamt</h3>
+    <p><strong>Höhe (Boden bis Sockenrand)</strong> <span id="hoeheMm">–</span> mm<br>
+    <strong>Fußlänge gesamt (Socke):</strong> <span id="fusslangMm">–</span> mm<br>
+    <strong>Fußlänge (Mensch):</strong> <span id="fusslangGeplant">–</span> mm<br>
+    <strong>Maschen für ein Sockenpaar:</strong> <span id="paarMaschen">–</span><br>
+    <strong>Garnverbrauch in Gramm für ein Sockenpaar:</strong> <span id="paarGramm">–</span> g</p>
+ 
     <h3>Anschlag</h3>
     <p><strong>Maschen geplant:</strong> <span id="anschlagGeplant">–</span><br>
     <strong>empfohlene Maschenzahl:</strong> <span id="maschenOutput">–</span></p>
@@ -90,12 +106,6 @@
     <strong>Verbrauch:</strong> <span id="fussGramm">–</span> g<br>
     <strong>Länge:</strong> <span id="fussMm">–</span> mm</p>
 
-    <h3>Gesamt</h3>
-    <p><strong>Höhe (Boden bis Sockenrand)</strong> <span id="hoeheMm">–</span> mm<br>
-    <strong>Fußlänge gesamt (Socke):</strong> <span id="fusslangMm">–</span> mm<br>
-    <strong>Fußlänge (Mensch):</strong> <span id="fusslangGeplant">–</span> mm<br>
-    <strong>Maschen für ein Sockenpaar:</strong> <span id="paarMaschen">–</span><br>
-    <strong>Garnverbrauch in Gramm für ein Sockenpaar:</strong> <span id="paarGramm">–</span> g</p>
   </div>
 
 
